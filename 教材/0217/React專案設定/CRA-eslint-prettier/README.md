@@ -15,10 +15,8 @@ npx create-react-app my-app
 
 或 
  
- > 要先安裝好create-react-app，指令`npm i -g create-react-app`
-
-```sh
-create-react-app myapp
+ ```sh
+yarn create react-app my-app
 ```
 
 ### 第 2 步: 安裝 ESLint 與 Prettier 模組
@@ -41,7 +39,7 @@ npm install --save-dev eslint-plugin-prettier prettier eslint-config-react-app e
 
 ### 第 3 步: 加入 eslint 與 prettier 設定檔案
 
-下載 `.eslintrc` 與 `.prettierrc` 與 `.eslintignore` 的設定檔，拷貝到專案的根目錄。
+下載 `.eslintrc` 與 `.prettierrc` 與 `.prettierignore` 與 `.eslintignore` 的設定檔，拷貝到專案的根目錄。
 
 ---
 
