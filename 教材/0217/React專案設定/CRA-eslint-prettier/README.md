@@ -15,10 +15,8 @@ npx create-react-app my-app
 
 或 
  
- > 要先安裝好create-react-app，指令`npm i -g create-react-app`
-
-```sh
-create-react-app myapp
+ ```sh
+yarn create react-app my-app
 ```
 
 ### 第 2 步: 安裝 ESLint 與 Prettier 模組
