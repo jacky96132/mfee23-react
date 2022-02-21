@@ -17,11 +17,11 @@ function App() {
       {undefined}
       <h2>Array</h2>
       {[1, 2, 'abc', true, null, undefined]}
-      <h2>Object</h2>
+      <h2>Object(錯誤)</h2>
       {/* 一般物件不能直接嵌入jsx中，會造成中斷錯誤 */}
       {/* {{ a: 1, b: 2 }} */}
       {/* {new Date()} */}
-      <h2>Function</h2>
+      <h2>Function(警告)</h2>
       {() => console.log(123)}
     </>
   )
