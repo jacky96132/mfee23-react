@@ -40,6 +40,11 @@ function App() {
         onClick={() => {
           const newObj = { id: 99, text: 'xxx' }
 
+
+          // 1. 從目前的狀態拷貝出一個新的變數值(陣列/物件)
+          // 2. 在新的變數值(陣列/物件)上作處理
+          // 3. 設定回原本的狀態中
+
           //1 //2
           const newData = [newObj, ...data]
 
