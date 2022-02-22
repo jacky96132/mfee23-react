@@ -36,7 +36,7 @@ const products = [
 ]
 
 // 初始化狀態用的函式 - 用陣列中的物件狀態
-const initStateWithObjcet = (products) => {
+const initStateWithObject = (products) => {
   const state = []
 
   for (let i = 0; i < products.length; i++) {
@@ -57,7 +57,7 @@ function App() {
   //   count:1
   // }]
   const [productsInOrder, setProductsInOrder] = useState(
-    initStateWithObjcet(products)
+    initStateWithObject(products)
   )
 
   // Summary
