@@ -28,7 +28,7 @@ function App() {
       <table border="1">
         {data.map((v, i) => {
           return (
-            <tr key={v.id}>
+            <tr key={v.id+i}>
               <td>{v.id}</td>
               <td>{v.text}</td>
             </tr>
