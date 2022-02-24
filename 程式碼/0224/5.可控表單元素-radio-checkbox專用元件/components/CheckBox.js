@@ -1,7 +1,8 @@
 import React from 'react'
 
 function CheckBox(props) {
-  const { value, checkedValueList, setCheckedValueList } = props
+  // otherProps是指其它的屬性物件值，ex. css classname...etc
+  const { value, checkedValueList, setCheckedValueList, ...otherProps } = props
 
   const handleChange = (e) => {
     //toggle(切換)
@@ -32,6 +33,7 @@ function CheckBox(props) {
         value={value}
         checked={checkedValueList.includes(value)}
         onChange={handleChange}
+        {...otherProps}
       />
       <label>{value}</label>
     </>
