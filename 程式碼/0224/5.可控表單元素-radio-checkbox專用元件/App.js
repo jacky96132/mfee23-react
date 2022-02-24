@@ -5,185 +5,145 @@ import RadioButton from './components/RadioButton'
 function App() {
   const [inputText, setInputText] = useState('')
   const [textArea, setTextArea] = useState('')
-  const [selectedOption, setSelectedOption] = useState('')
-  // radio - 狀態要記錄的是使用者選中哪個選項的值
-  const [gender, setGender] = useState('')
+
+  // radio group
+  const [radioValue, setRadioValue] = useState('')
+  const foodOptions = ['排骨飯', '雞腿飯', '牛肉面']
 
   // radio - 專用元件
   const [gender2, setGender2] = useState('')
   // radio - 選項
   const genderOptions = ['男', '女', '不提供']
 
-  // checkbox - 單一核取方塊
+  // select
+  const [selectedValue, setSelectedValue] = useState('')
+
+  // single checkbox - agree
   const [agree, setAgree] = useState(false)
 
   // checkbox group
   const [likeList, setLikeList] = useState([])
+  const fruitOptions = ['西瓜', '芒果', '芭樂']
 
   // checkbox group(專用元件)
   const [likeList2, setLikeList2] = useState([])
-  const fruitOptions = ['西瓜', '芒果', '芭樂', '香蕉']
+  const fruitOptions2 = ['西瓜', '芒果', '香蕉', '龍眼']
 
   return (
     <>
-      <section id="input-text">
-        <h2>文字輸入框</h2>
-        <input
-          type="text"
-          value={inputText}
-          onChange={(e) => {
-            setInputText(e.target.value)
-          }}
-        />
-      </section>
-      <section id="textarea">
-        <h2>文字區域</h2>
-        <textarea
-          value={textArea}
-          onChange={(e) => {
-            setTextArea(e.target.value)
-          }}
-        />
-      </section>
-      <section id="select">
-        <h2>下拉選單</h2>
-        <select
-          value={selectedOption}
-          onChange={(e) => {
-            setSelectedOption(e.target.value)
-          }}
-        >
-          <option value="">請選擇</option>
-          <option value="雞腿">雞腿</option>
-          <option value="魯肉">魯肉</option>
-          <option value="排骨">排骨</option>
-        </select>
-      </section>
-      <section id="input-radio">
-        <h2>選項按鈕</h2>
-        <input
-          type="radio"
-          value="男"
-          checked={gender === '男'}
-          onChange={(e) => {
-            setGender(e.target.value)
-          }}
-        />
-        <label>男</label>
-        <input
-          type="radio"
-          value="女"
-          checked={gender === '女'}
-          onChange={(e) => {
-            setGender(e.target.value)
-          }}
-        />
-        <label>女</label>
-        <input
-          type="radio"
-          value="不提供"
-          checked={gender === '不提供'}
-          onChange={(e) => {
-            setGender(e.target.value)
-          }}
-        />
-        <label>不提供</label>
-      </section>
-      <section id="radio-button">
-        <h2>選項按鈕(專用元件)</h2>
-        {genderOptions.map((v, i) => {
-          return (
-            <RadioButton
-              key={i}
+      <h1>可控表單元素</h1>
+      <h2>文字輸入框</h2>
+      <input
+        type="text"
+        value={inputText}
+        onChange={(e) => {
+          setInputText(e.target.value)
+        }}
+      />
+      <h2>文字輸入區域</h2>
+      <textarea
+        value={textArea}
+        onChange={(e) => {
+          setTextArea(e.target.value)
+        }}
+      />
+      <h2>選項按鈕(群組)</h2>
+      {foodOptions.map((v, i) => {
+        return (
+          <div key={i}>
+            <input
+              type="radio"
               value={v}
-              checkedValue={gender2}
-              setCheckedValue={setGender2}
+              id={'foodOption' + i}
+              checked={v === radioValue}
+              onChange={(e) => {
+                setRadioValue(e.target.value)
+              }}
             />
-          )
-        })}
-      </section>
-      <section id="checkbox-single">
-        <h2>單一核取方塊</h2>
-        <input
-          type="checkbox"
-          checked={agree}
-          onChange={(e) => {
-            setAgree(e.target.checked)
-          }}
-        />
-        <label>我同意網站註冊規定</label>
-      </section>
-      <section id="checkbox-group">
-        <h2>多個核取方塊</h2>
-        <input
-          type="checkbox"
-          value="西瓜"
-          checked={likeList.includes('西瓜')}
-          onChange={(e) => {
-            //toggle(切換)
-            // 如果目前這個值在陣列中 -> 移出陣列
-            if (likeList.includes(e.target.value)) {
-              // 1. 先從原本的陣列(物件)拷貝出一個新陣列(物件)
-              // 2. 在拷貝出的新陣列(物件)上運算或處理
-              const newLikeList = likeList.filter((v, i) => {
-                return v !== e.target.value
-              })
-              // 3. 設定回原本的狀態
-              setLikeList(newLikeList)
-            } else {
-              // 反之如果目前這個值"沒在"陣列中 -> 加入陣列
-              // 1. 先從原本的陣列(物件)拷貝出一個新陣列(物件)
-              // 2. 在拷貝出的新陣列(物件)上運算或處理
-              const newLikeList = [...likeList, e.target.value]
-
-              // 3. 設定回原本的狀態
-              setLikeList(newLikeList)
-            }
-          }}
-        />
-        <label>西瓜</label>
-        <input
-          type="checkbox"
-          value="芒果"
-          checked={likeList.includes('芒果')}
-          onChange={(e) => {
-            //toggle(切換)
-            // 如果目前這個值在陣列中 -> 移出陣列
-            if (likeList.includes(e.target.value)) {
-              // 1. 先從原本的陣列(物件)拷貝出一個新陣列(物件)
-              // 2. 在拷貝出的新陣列(物件)上運算或處理
-              const newLikeList = likeList.filter((v, i) => {
-                return v !== e.target.value
-              })
-              // 3. 設定回原本的狀態
-              setLikeList(newLikeList)
-            } else {
-              // 反之如果目前這個值"沒在"陣列中 -> 加入陣列
-
-              // 1. 先從原本的陣列(物件)拷貝出一個新陣列(物件)
-              // 2. 在拷貝出的新陣列(物件)上運算或處理
-              const newLikeList = [...likeList, e.target.value]
-
-              // 3. 設定回原本的狀態
-              setLikeList(newLikeList)
-            }
-          }}
-        />
-        <label>芒果</label>
-      </section>
-      <section id="checkbox-group2">
-        <h2>多個核取方塊(專用元件)</h2>
-        {fruitOptions.map((v, i) => {
-          return (
-            <CheckBox
-              key={i}
+            <label htmlFor={'foodOption' + i}>{v}</label>
+          </div>
+        )
+      })}
+      <h2>下拉清單</h2>
+      <label htmlFor="cars">選擇車子:</label>
+      <select
+        name="cars"
+        id="cars"
+        value={selectedValue}
+        onChange={(e) => {
+          setSelectedValue(e.target.value)
+        }}
+      >
+        <option value="">請選擇</option>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="opel">Opel</option>
+        <option value="audi">Audi</option>
+      </select>
+      <h2>核取方塊(單一)</h2>
+      <input
+        type="checkbox"
+        checked={agree}
+        onChange={(e) => {
+          setAgree(e.target.checked)
+        }}
+      />
+      <label>我同意會員註冊條款</label>
+      <h2>核取方塊(群組)</h2>
+      <p>選擇你喜歡的水果</p>
+      {fruitOptions.map((v, i) => {
+        return (
+          <div key={i}>
+            <input
+              type="checkbox"
               value={v}
-              checkedValueList={likeList2}
-              setCheckedValueList={setLikeList2}
+              checked={likeList.includes(v)}
+              onChange={(e) => {
+                //先判斷是否有在狀態陣列中
+                const inState = likeList.includes(e.target.value)
+
+                if (inState) {
+                  //if 在陣列中 -> 移除
+                  const newLikeList = likeList.filter(
+                    (v, i) => v !== e.target.value
+                  )
+                  setLikeList(newLikeList)
+                } else {
+                  //else  -> 加入陣列
+                  const newLikeList = [...likeList, e.target.value]
+                  setLikeList(newLikeList)
+                }
+              }}
             />
-          )
-        })}
-      </section>
+            <label>{v}</label>
+          </div>
+        )
+      })}
+      <h2>選項按鈕(專用元件)</h2>
+      {genderOptions.map((v, i) => {
+        return (
+          <RadioButton
+            key={i}
+            value={v}
+            checkedValue={gender2}
+            className="form-check-input"
+            setCheckedValue={setGender2}
+          />
+        )
+      })}
+
+      <h2>多個核取方塊(專用元件)</h2>
+      {fruitOptions2.map((v, i) => {
+        return (
+          <CheckBox
+            key={i}
+            value={v}
+            className="form-check-input"
+            checkedValueList={likeList2}
+            setCheckedValueList={setLikeList2}
+          />
+        )
+      })}
     </>
   )
 }

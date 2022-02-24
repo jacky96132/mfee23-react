@@ -1,7 +1,9 @@
 import React from 'react'
 
 function RadioButton(props) {
-  const { value, checkedValue, setCheckedValue } = props
+  const { value, checkedValue, setCheckedValue, ...otherProps} = props
+
+  console.log(otherProps)
 
   return (
     <>
@@ -12,6 +14,7 @@ function RadioButton(props) {
         onChange={(e) => {
           setCheckedValue(e.target.value)
         }}
+        {...otherProps}
       />
       <label>{value}</label>
     </>
