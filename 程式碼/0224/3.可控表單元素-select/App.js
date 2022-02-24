@@ -47,7 +47,7 @@ function App() {
         )
       })}
       <h2>下拉清單</h2>
-      <label for="cars">選擇車子:</label>
+      <label htmlFor="cars">選擇車子:</label>
       <select
         name="cars"
         id="cars"
